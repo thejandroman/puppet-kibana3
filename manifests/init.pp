@@ -42,9 +42,12 @@
 #   The folder to install kibana3 into.
 #
 # [*k3_release*]
-#   A tag or branch from the https://github.com/elasticsearch/kibana repo. Note
-#   that you should use the commit hash instead of the tag name (see issue #5)
-#   or puppet will overwrite the config.js file.
+#   A tag or branch from the kibana3 git repo. Note that you should use the
+#   commit hash instead of the tag name (see issue #5) or puppet will overwrite
+#   the config.js file.
+#
+# [*k3_clone_url*]
+#   URL for the kibana3 git repo.
 #
 # [*manage_git*]
 #   Should the module manage git.
@@ -90,6 +93,7 @@ class kibana3 (
   $k3_folder_owner   = $::kibana3::params::k3_folder_owner,
   $k3_install_folder = $::kibana3::params::k3_install_folder,
   $k3_release        = $::kibana3::params::k3_release,
+  $k3_clone_url      = $::kibana3::params::k3_clone_url,
 
   $manage_git            = $::kibana3::params::manage_git,
   $manage_git_repository = $::kibana3::params::manage_git_repository,
