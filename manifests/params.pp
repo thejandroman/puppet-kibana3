@@ -33,6 +33,7 @@ class kibana3::params {
   $k3_folder_owner   = undef
   $k3_install_folder = '/opt/kibana3'
   $k3_release        = 'a50a913'
+  $k3_clone_url      = 'https://github.com/elasticsearch/kibana.git'
 
   $manage_git            = true
   $manage_git_repository = true

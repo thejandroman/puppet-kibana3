@@ -24,7 +24,7 @@ class kibana3::install {
         $::kibana3::k3_install_folder:
         ensure   => present,
         provider => git,
-        source   => 'https://github.com/elasticsearch/kibana.git',
+        source   => $::kibana3::k3_clone_url,
         revision => $::kibana3::k3_release,
         owner    => $_ws_user,
         notify   => Class['::Apache::Service'],
@@ -44,7 +44,7 @@ class kibana3::install {
         $::kibana3::k3_install_folder:
         ensure   => present,
         provider => git,
-        source   => 'https://github.com/elasticsearch/kibana.git',
+        source   => $::kibana3::k3_clone_url,
         revision => $::kibana3::k3_release,
         owner    => $_ws_user,
       }
