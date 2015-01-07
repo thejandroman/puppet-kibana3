@@ -16,6 +16,7 @@ describe 'kibana3', :type => :class do
         it { should contain_class('git') }
         it { should contain_class('apache') }
         it { should contain_vcsrepo('/opt/kibana3') \
+          .with_source('https://github.com/elasticsearch/kibana.git') \
           .with_revision('a50a913') \
           .that_notifies('Class[Apache::Service]') \
           .that_comes_before('Apache::Vhost[kibana3]') }
@@ -32,6 +33,7 @@ describe 'kibana3', :type => :class do
         it { should_not contain_class('git') }
         it { should contain_class('apache') }
         it { should contain_vcsrepo('/opt/kibana3') \
+          .with_source('https://github.com/elasticsearch/kibana.git') \
           .with_revision('a50a913') \
           .that_notifies('Class[Apache::Service]') \
           .that_comes_before('Apache::Vhost[kibana3]') }
@@ -49,6 +51,7 @@ describe 'kibana3', :type => :class do
         it { should_not contain_class('apache') }
         it { should contain_vcsrepo('/opt/kibana3') \
           .with(
+            'source'   => 'https://github.com/elasticsearch/kibana.git',
             'revision' => 'a50a913',
             'owner'    => 'root'
           ) }
@@ -62,6 +65,7 @@ describe 'kibana3', :type => :class do
         it { should contain_class('apache') }
         it { should contain_vcsrepo('/opt/kibana3') \
           .with(
+            'source'   => 'https://github.com/elasticsearch/kibana.git',
             'revision' => 'a50a913',
             'owner'    => 'foo'
           ) \
@@ -81,6 +85,7 @@ describe 'kibana3', :type => :class do
         it { should contain_class('git') }
         it { should contain_class('apache') }
         it { should contain_vcsrepo('/tmp/kibana3') \
+          .with_source('https://github.com/elasticsearch/kibana.git') \
           .with_revision('a50a913') \
           .that_notifies('Class[Apache::Service]') \
           .that_comes_before('Apache::Vhost[kibana3]') }
@@ -97,6 +102,7 @@ describe 'kibana3', :type => :class do
         it { should contain_class('git') }
         it { should contain_class('apache') }
         it { should contain_vcsrepo('/opt/kibana3') \
+          .with_source('https://github.com/elasticsearch/kibana.git') \
           .with_revision('3a485aa') \
           .that_notifies('Class[Apache::Service]') \
           .that_comes_before('Apache::Vhost[kibana3]') }
@@ -107,12 +113,35 @@ describe 'kibana3', :type => :class do
           ) }
       end
 
+      context 'with non-standard clone url' do
+        let (:params) {{ :k3_clone_url => 'http://git.io/hXZlwA' }}
+        it { should compile }
+        it { should contain_class('git') }
+        it { should contain_class('apache') }
+        it { should contain_vcsrepo('/opt/kibana3') \
+          .with_source('http://git.io/hXZlwA') \
+          .with_revision('a50a913') \
+          .that_notifies('Class[Apache::Service]') \
+          .that_comes_before('Apache::Vhost[kibana3]') }
+      end
+
+      context 'with non-standard clone url and no webserver' do
+        let (:params) {{ :k3_clone_url => 'http://git.io/hXZlwA', :manage_ws => false }}
+        it { should compile }
+        it { should contain_class('git') }
+        it { should_not contain_class('apache') }
+        it { should contain_vcsrepo('/opt/kibana3') \
+          .with_source('http://git.io/hXZlwA') \
+          .with_revision('a50a913') }
+      end
+
       context 'with non-standard port' do
         let (:params) {{ :ws_port => '8080' }}
         it { should compile }
         it { should contain_class('git') }
         it { should contain_class('apache') }
         it { should contain_vcsrepo('/opt/kibana3') \
+          .with_source('https://github.com/elasticsearch/kibana.git') \
           .with_revision('a50a913') \
           .that_notifies('Class[Apache::Service]') \
           .that_comes_before('Apache::Vhost[kibana3]') }

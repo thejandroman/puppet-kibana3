@@ -106,6 +106,11 @@ The folder to install kibana3 into.
 **Default:** _a50a913 (v3.0.1)_
 A tag or branch from the [kibana3](https://github.com/elasticsearch/kibana) repo. Note that you should use the commit hash instead of the tag name (see [issue #5](https://github.com/thejandroman/kibana3/issues/5)) or puppet will overwrite the config.js file.
 
+##### `k3_clone_url`
+**Data Type:** _string_
+**Default:** _https://github.com/elasticsearch/kibana.git_
+URL for the kibana3 git repo.
+
 #####`manage_git`
 **Data Type:** _bool_
 **Default:** _true_
