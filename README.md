@@ -127,9 +127,14 @@ Should the module manage kibana3 git repository.
 Change the default servername for the apache vhost. Only taken into account if `manage_ws => true`.
 
 #####`ws_port`
-**Data Type:** _bool_
-**Default:** _true_
+**Data Type:** _string_
+**Default:** _80_
 Change the default port for the webserver to a custom value. Only taken into account if `manage_ws => true`.
+
+#####`ws_default_vhost`
+**Data Type:** _bool_
+**Default:** _false_
+Attempt to make the Kibana vhost the default. Useful when setting up a dedicated Kibana server. Only taken into account if `manage_ws => true`.
 
 ##Limitations
  * Tested and built on Ubuntu 12.04.

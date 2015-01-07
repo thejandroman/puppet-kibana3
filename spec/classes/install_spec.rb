@@ -123,6 +123,17 @@ describe 'kibana3', :type => :class do
           ) }
       end
 
+      context 'with apache default_vhost set to true' do
+        let (:params) {{ :ws_default_vhost => true }}
+        it { should contain_class('apache') }
+        it { should contain_apache__vhost('kibana3') \
+          .with(
+            'port'          => '80',
+            'docroot'       => '/opt/kibana3/src',
+            'default_vhost' => true
+          ) }
+      end
+      
       context 'with manage_git_repository set to false' do
         let (:params) {{ :manage_git_repository => false }}
         it { should_not contain_vcsrepo('/opt/kibana3') }
