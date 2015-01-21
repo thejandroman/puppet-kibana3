@@ -2,25 +2,25 @@
     "name": "thejandroman-kibana3",
     "version": "0.0.4",
     "author": "thejandroman",
-    "license": "Apache License, Version 2.0",
+    "license": "Apache-2.0",
     "summary": "Installs and configures kibana3.",
     "source": "https://github.com/thejandroman/puppet-kibana3",
     "dependencies": [
         {
             "name": "puppetlabs/git",
-            "version_requirement": ">= 0.0.3"
+            "version_requirement": "0.x"
         },
         {
             "name": "puppetlabs/vcsrepo",
-            "version_requirement": ">= 0.2.0"
+            "version_requirement": ">=0.1.0 <=1.2.0"
         },
         {
             "name": "puppetlabs/apache",
-            "version_requirement": ">= 1.0.1"
+            "version_requirement": ">=0.10.0 <=1.1.1"
         },
         {
             "name": "puppetlabs/stdlib",
-            "version_requirement": ">= 3.2.1"
+            "version_requirement": ">=3.2.0 <5.0.0"
         }
     ],
     "project_page": "https://github.com/thejandroman/puppet-kibana3",
