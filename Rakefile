@@ -7,6 +7,7 @@ begin
 rescue LoadError
 end
 
+PuppetLint.configuration.send('disable_80chars')
 PuppetLint.configuration.send('disable_class_inherits_from_params_class')
 PuppetLint.configuration.fail_on_warnings = true
 

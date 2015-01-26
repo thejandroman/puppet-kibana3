@@ -66,6 +66,11 @@
 #   Change the default port for the webserver to a custom value. Only taken
 #   into account if manage_ws => true.
 #
+# [*ws_extras*]
+#   Hash of option to pass to the apache::vhost resource
+#   Only taken into account if manage_ws => true.
+#   Defaults to {}
+#
 # === Examples
 #
 #  class { 'kibana3':
@@ -102,6 +107,7 @@ class kibana3 (
   $ws_servername    = $::kibana3::params::ws_servername,
   $ws_port          = $::kibana3::params::ws_port,
   $ws_default_vhost = $::kibana3::params::ws_default_vhost,
+  $ws_extras        = $::kibana3::params::ws_extras,
 
 ) inherits kibana3::params {
 
@@ -114,6 +120,8 @@ class kibana3 (
     $ws_default_vhost)
 
   validate_array($config_panel_names)
+
+  validate_hash($ws_extras)
 
   case $ensure {
     'present': {

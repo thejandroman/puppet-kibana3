@@ -7,6 +7,7 @@ describe 'kibana3', :type => :class do
         :concat_basedir         => '/dne',
         :osfamily               => system,
         :operatingsystemrelease => '12.04',
+        :fqdn                   => 'kibana3',
       }
     end
 
