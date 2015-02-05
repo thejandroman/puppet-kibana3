@@ -141,6 +141,11 @@ Change the default port for the webserver to a custom value. Only taken into acc
 **Default:** _false_
 Attempt to make the Kibana vhost the default. Useful when setting up a dedicated Kibana server. Only taken into account if `manage_ws => true`.
 
+#####`ws_extras`
+**Data Type:** _hash_
+**Default:** _{}_
+Specify extras option for the vhost configuration. Only taken into account if `manage_ws => true`.
+
 ##Limitations
  * Tested and built on Ubuntu 12.04.
  * Tested with Kibana v3.0.0.

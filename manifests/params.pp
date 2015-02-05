@@ -39,7 +39,8 @@ class kibana3::params {
   $manage_git_repository = true
 
   $manage_ws        = true
-  $ws_servername    = 'kibana3'
+  $ws_servername    = $::fqdn
   $ws_port          = '80'
   $ws_default_vhost = false
+  $ws_extras        = {}
 }
