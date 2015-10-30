@@ -1,7 +1,7 @@
 # = Private class: kibana3::config
 #
 # Author: Alejandro Figueroa
-class kibana3::config {
+class kibana3::config inherits kibana3 {
   if $::kibana3::manage_ws {
     file {
       "${::kibana3::k3_install_folder}/src/config.js":
