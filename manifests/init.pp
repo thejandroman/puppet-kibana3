@@ -127,7 +127,14 @@ class kibana3 (
     'present': {
       anchor { 'kibana3::begin': } ->
       class { 'kibana3::install': } ->
-      class { 'kibana3::config': } ->
+      class { 'kibana3::config': 
+        config_default_route => $config_default_route,
+        config_es_port       => $config_es_port,
+        config_es_protocol   => $config_es_protocol,
+        config_es_server     => $config_es_server,
+        config_kibana_index  => $config_kibana_index,
+        config_panel_names   => $config_panel_names,
+      } ->
       anchor { 'kibana3::end': }
     }
     'absent': {
