@@ -8,7 +8,7 @@ function (Settings) {
 
   return new Settings({
 
-    elasticsearch: "<%= scope['::kibana3::config_es_protocol'] %>://<%= scope['::kibana3::config_es_server'] %>:<%= scope['::kibana3::config_es_port'] %>",
+    elasticsearch: "<%= scope['::kibana3::config_es_protocol'] %>://<%= scope['::kibana3::config_es_server'] %>:<%= scope['::kibana3::config_es_port'] %>/<%= scope['::kibana3::config_es_suffix'] %>",
 
     default_route: '<%= scope['::kibana3::config_default_route'] %>',
 

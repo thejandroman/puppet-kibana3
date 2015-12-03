@@ -9,6 +9,7 @@ class kibana3::params {
   $config_es_protocol   = 'http'
   $config_es_server     = '"+window.location.hostname+"'
   $config_kibana_index  = 'kibana-int'
+  $config_es_suffix     = ''
   $config_panel_names   = [
     'histogram',
     'map',
