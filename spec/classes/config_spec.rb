@@ -107,6 +107,18 @@ describe 'kibana3', :type => :class do
           .that_notifies('Class[Apache::Service]')
         }
       end
+      
+      context 'with non-standard elasticsearch server url suffix' do
+        let (:params) {{ :config_es_suffix => '' }}
+        it { should compile }
+        it { should contain_file('/opt/kibana3/src/config.js') \
+          .with_content(/^\s*elasticsearch: \"http:\/\/\localhost:9200\",$/) \
+          .with_content(/^\s*default_route: '\/dashboard\/file\/default\.json',$/) \
+          .with_content(/^\s*kibana_index: \"kibana-int\",$/) \
+          .with_content(/^\s*panel_names: \[\s*'histogram',\s*'map',\s*'goal',\s*'table',\s*'filtering',\s*'timepicker',\s*'text',\s*'hits',\s*'column',\s*'trends',\s*'bettermap',\s*'query',\s*'terms',\s*'stats',\s*'sparklines',\s*\]$/) \
+          .that_notifies('Class[Apache::Service]')
+        }
+      end
 
       context 'with non-standard kibana index' do
         let (:params) {{ :config_kibana_index => 'kibana-index' }}
