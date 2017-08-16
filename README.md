@@ -79,6 +79,11 @@ The protocol (http/https) of the elasticsearch server. Because kibana3 is browse
 **Default:** _"+window.location.hostname+"_
 The FQDN of the elasticsearch server. Because kibana3 is browser based this must be accessible from the browser loading kibana3.
 
+#####`config_es_suffix`
+**Data Type:** _string_
+**Default:** _""_
+Adds suffix to elastaicsearch url. Beacuse sometimes (expecialy with combination with apache or other proxy) elasticsearch is not in server root, but in some sub url. 
+
 #####`config_kibana_index`
 **Data Type:** _string_
 **Default:** _kibana-int_
